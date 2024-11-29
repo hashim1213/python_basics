@@ -83,3 +83,89 @@ print(f"Average word length: {average:.2f}")
 # - Gives 20% discount if buying 3 or more items
 # - Gives additional 10% discount if total is over 100
 # - Returns final price
+
+def cart_total(cart):
+    #calculate the initial total 
+    total = 0 
+    for item, price in cart: 
+        total = total + price 
+    #length of cart greater than 3 
+    if len(cart) > 3: 
+        total = total * 0.8
+    #10% discount if total is over than $100
+    if total > 100: 
+        total = total * 0.9 
+    
+    return total 
+
+#test function 
+cart = [("shirt", 20), ("pants", 45), ("shoes", 40)]
+final_price = cart_total(cart)
+print(f"Final price: ${final_price:.2f}")
+
+#question 5 
+# Write a function that takes a list of numbers and:
+# - Doubles the even numbers
+# - Triples the odd numbers
+# - Returns the new list
+
+def list_manipulate (numbers):
+    new_list = []
+    for num in numbers: 
+        if num % 2 == 0: #if even 
+            new_list.append(num * 2)
+        else: #if odd
+            new_list.append(num * 3)
+    return new_list 
+#test case 
+numbers = [1, 2, 3, 4, 5]
+result = list_manipulate(numbers)
+print(result)
+
+#question 6 
+# Create a function that checks if a password is strong:
+# - At least 8 characters
+# - Contains at least one uppercase letter
+# - Contains at least one number
+# - Returns True or False
+
+def pass_check(password):
+
+    if len(password) < 8: 
+        return False 
+    has_upper = False 
+    has_number = False 
+
+    for char in password: 
+        if char.isupper(): 
+            has_upper = True 
+        if char.isdigit():
+            has_number = True 
+    return has_upper and has_number 
+
+print(pass_check("Python"))  # True
+
+#question 7 
+
+# Write a function that:
+# - Takes a list of anything (numbers, strings, etc)
+# - Removes all duplicate items
+# - Removes any strings that are less than 3 characters
+# - Returns the cleaned list
+
+
+def double_remove (mixed_list):
+    new_list = []
+    
+    for items in mixed_list: 
+
+        if isinstance(items, str) and len(items) < 3: 
+            continue 
+        if items not in new_list: 
+            new_list.append(items)
+
+    return new_list
+
+mixed_list = [1, "a", "hello", 3, "hi", 1, "hello", "python", 2]
+result = double_remove(mixed_list)
+print (result)
