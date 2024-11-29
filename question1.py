@@ -39,4 +39,47 @@ pos, neg, zero = count_nums(numbers)
 print(f"positive: {pos}")
 print(f"negative: {neg}")
 print(f"zero: {zero}")
-    
+
+#question 3 
+# Write a function that takes a sentence and returns:
+# - The longest word
+# - The shortest word
+# - Average word length
+
+def word_counter(sentance):
+    words = sentance.split() #split the sentance into a list
+
+    longest_word = words[0]
+    shortest_word = words[0]
+    total_length = 0
+
+    #loop through each of the wod to find the longest, shortest, and total length 
+
+    for word in words: 
+        #checks if the current word is longer than our longest 
+        if len(word) > len(longest_word):
+            longest_word = word 
+        
+        #check if curretnt word is shorter than our shortest 
+        if len(word) < len(shortest_word):
+            shortest_word = word 
+
+        total_length = total_length + len(word)
+    #clac the avg
+    average_length = total_length / len(words)
+
+    return longest_word, shortest_word, average_length 
+
+sentence = "Python is an amazing programming language"
+longest, shortest, average = word_counter(sentence)
+
+print(f"Longest word: {longest}")
+print(f"Shortest word: {shortest}")
+print(f"Average word length: {average:.2f}")
+
+#question 4
+# Create a function that:
+# - Takes a list of items and their prices
+# - Gives 20% discount if buying 3 or more items
+# - Gives additional 10% discount if total is over 100
+# - Returns final price
